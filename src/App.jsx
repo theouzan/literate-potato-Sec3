@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "./components/Header";
 import User from "./components/User";
 import FirstCourse from "./components/FirstCourse";
+import CoreConcepts from "./components/CoreConcept/CoreConcepts";
+import TabButton from "./components/TabButton";
 
 const USER_DATA = {
   firstName: "Maximilian",
@@ -21,10 +23,12 @@ const App = () => {
     content = <FirstCourse />;
   } else if (switchDisplay === "user") {
     content = <User user={USER_DATA} />;
+  } else if (switchDisplay === "coreConcepts"){
+    content = <CoreConcepts />
   }
 
   return (
-    <div id="app">
+    <main>
       <Header />
       <div>
         <button onClick={onButtonClickHandler} name="first">
@@ -33,9 +37,21 @@ const App = () => {
         <button onClick={onButtonClickHandler} name="user">
           Add user course
         </button>
+        <button onClick={onButtonClickHandler} name="coreConcepts">
+          Core concepts course
+        </button>
       </div>
-      <div>{content}</div>
-    </div>
+      {content}
+      <section id="examples">
+        <h2>Examples</h2>
+        <menu>
+          <TabButton>Components</TabButton>
+          <TabButton>JSX</TabButton>
+          <TabButton>Props</TabButton>
+          <TabButton>State</TabButton>
+        </menu>
+      </section>
+    </main>
   );
 };
 
